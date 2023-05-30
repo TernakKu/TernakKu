@@ -1,5 +1,6 @@
 # RESTFul API
 
+This RESTful API is built using the Python Flask framework. 
 Specification:
 
 | Method | Path          | Response Code | Body | Description         |
