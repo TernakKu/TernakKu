@@ -1,6 +1,6 @@
 # RESTFul API
 
-Create the simple RESTFul API using Node.js Natively and Hapi Framework with the specification:
+Specification:
 
 | Method | Path          | Response Code | Body | Description         |
 | ------ |---------------| ------------- | ---- |---------------------|
