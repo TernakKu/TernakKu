@@ -22,5 +22,6 @@ Our goal in building this application is to assist farmers where they have acces
 *Chicken*
 * Cocciodiosis
 * Salmonella
+
 *Cow*
 * Lumpy Cows
