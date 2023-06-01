@@ -12,7 +12,6 @@ import com.dicoding.ternakku.R
 class ButtonUniversal: AppCompatButton {
 
     private lateinit var enableBg: Drawable
-    private lateinit var disableBg: Drawable
     private var textColor: Int = 0
 
     constructor(context: Context) : super(context) {
@@ -29,7 +28,6 @@ class ButtonUniversal: AppCompatButton {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        background = if (isEnabled) enableBg else disableBg
 
         setTextColor(textColor)
         textSize = 16f
@@ -37,7 +35,7 @@ class ButtonUniversal: AppCompatButton {
     }
 
     private fun init(){
-        textColor = ContextCompat.getColor(context, android.R.color.background_light)
+        textColor = ContextCompat.getColor(context, R.color.brown2)
         enableBg = ContextCompat.getDrawable(context, R.drawable.bg_button) as Drawable
     }
 }
