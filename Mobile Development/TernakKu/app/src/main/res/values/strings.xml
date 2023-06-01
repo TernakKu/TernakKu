@@ -5,16 +5,21 @@
     <string name="camera">Kamera</string>
     <string name="galeri">Galeri</string>
 
-    <string name="desc">Deskripsi</string>
-    <string name="sample">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="desc">Diagnosa Penyakit</string>
+    <string name="sample">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 
     <string name="imgDesc">Image Disease</string>
 
     <string name="nameDisease">Nama Penyakit</string>
 
-    <string name="prevent">Penyembuhan dan Pencegahan</string>
+    <string name="prevent">Langkah - langkah yang Diperlukan</string>
     <string name="scan_content">Scan Disini!</string>
     <string name="quetion">quetion</string>
     <string name="cara_penggunaan">Cara Penggunaan</string>
+    <string name="useable_kamera">Ambil gambar bagian tubuh sapi atau ayam yang akan discan. Fokuskan gambar pada bagian tubuh yang terkena penyakit. </string>
+    <string name="useable_galeri">Pilih gambar bagian tubuh sapi atau ayam yang jelas dari galeri anda.</string>
+
+    <string name="search_hint">Masukkan nama penyakit…</string>
+    <string name="logo">logo</string>
 
 </resources>

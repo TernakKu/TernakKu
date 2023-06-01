@@ -13,4 +13,11 @@
     <color name="dark3">#AF0171</color>
     <color name="dark4">#E80F88</color>
 
+    <color name="transparent">#00000000</color>
+
+    <color name="brown1">#3B270D</color>
+    <color name="brown2">#E1AD69</color>
+    <color name="brown3">#CCB37C</color>
+    <color name="brown4">#C18850</color>
+
 </resources>
