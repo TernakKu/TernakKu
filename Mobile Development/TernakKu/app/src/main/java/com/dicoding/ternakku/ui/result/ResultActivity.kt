@@ -3,10 +3,19 @@ package com.dicoding.ternakku.ui.result
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.dicoding.ternakku.R
+import com.dicoding.ternakku.data.retrofit.ApiConfig
+import com.dicoding.ternakku.data.retrofit.DiseaseResponse
 import com.dicoding.ternakku.databinding.ActivityResultBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import kotlin.math.abs
 
 class ResultActivity : AppCompatActivity() {
@@ -27,7 +36,52 @@ class ResultActivity : AppCompatActivity() {
             }
 
         })
+
+        val image = intent.getStringExtra("img")
+        if (image != null) {
+            getImage(image)
+        }
+
     }
+
+    private fun getImage(imageName: String){
+        val client = ApiConfig.getApiService().getImg(imageName)
+        client.enqueue(object : Callback<DiseaseResponse> {
+            override fun onResponse(
+                call: Call<DiseaseResponse>,
+                response: Response<DiseaseResponse>
+            ) {
+                if (response.isSuccessful){
+                    val responseBody = response.body()
+                    if (responseBody!= null){
+                        setDetailsContent(responseBody)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<DiseaseResponse>, t: Throwable) {
+                Log.e("ResultActivity", "onFailure: ${t.message.toString()}")
+                Toast.makeText(this@ResultActivity, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun setDetailsContent(data: DiseaseResponse){
+        binding.apply {
+
+            tvNameDisease.text = data.diseaseName
+            tvDescContent.text = data.diseaseDetails
+            tvPreventContent.text = data.handlingMethod
+
+            Glide.with(this@ResultActivity)
+                .load(data.originalImage)
+                .error(R.drawable.baseline_broken_image_24_brown2)
+                .into(binding.ivResultImage)
+
+        }
+    }
+
 
     open class OnSwipeTouchListener(ctx: Context) : View.OnTouchListener {
 

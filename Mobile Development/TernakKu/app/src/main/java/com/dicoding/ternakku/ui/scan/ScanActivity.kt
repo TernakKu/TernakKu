@@ -9,18 +9,28 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.dicoding.ternakku.R
+import com.dicoding.ternakku.data.retrofit.ApiConfig
+import com.dicoding.ternakku.data.retrofit.DiseaseResponse
 import com.dicoding.ternakku.databinding.ActivityScanBinding
 import com.dicoding.ternakku.ui.result.ResultActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import retrofit2.Callback
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import retrofit2.Call
+import retrofit2.Response
 import java.io.File
 
 class ScanActivity : AppCompatActivity() {
@@ -65,9 +75,40 @@ class ScanActivity : AppCompatActivity() {
     private fun scanImage() {
         if (getFile != null) {
             val file = reduceFileImage(getFile as File)
-            val intent = Intent(this@ScanActivity, ResultActivity::class.java)
-            //intent.putExtra("image", file)
-            startActivity(intent)
+            val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val imageMultiPart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "image",
+                file.name,
+                requestImageFile
+            )
+            val service = ApiConfig.getApiService().predictDisease(imageMultiPart)
+            service.enqueue(object : Callback<DiseaseResponse>{
+                override fun onResponse(
+                    call: Call<DiseaseResponse>,
+                    response: Response<DiseaseResponse>
+                ) {
+                    if (response.isSuccessful){
+                        val responseBody = response.body()
+
+                        if (responseBody!= null){
+                            Log.d("SanActivity", responseBody.diseaseName)
+                            Toast.makeText(this@ScanActivity, responseBody.diseaseName, Toast.LENGTH_SHORT).show()
+
+                            val intent = Intent(this@ScanActivity, ResultActivity::class.java)
+                            intent.putExtra("disease", responseBody.diseaseName)
+                            intent.putExtra("img", responseBody.imageName)
+
+                            startActivity(intent)
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<DiseaseResponse>, t: Throwable) {
+                    Log.e("ScanActivity", "onFailure: ${t.message.toString()}")
+                    Toast.makeText(this@ScanActivity, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
+                }
+
+            })
 
         } else {
             Toast.makeText(this@ScanActivity, "Silakan masukkan berkas gambar terlebih dahulu.", Toast.LENGTH_SHORT).show()
@@ -159,6 +200,11 @@ class ScanActivity : AppCompatActivity() {
     private fun dialogHelp(){
         val dialog = BottomSheetDialog(this@ScanActivity)
         val view = layoutInflater.inflate(R.layout.overlay_quetion, null)
+
+        val button = dialog.findViewById<ImageView>(R.id.imageView2)
+        if (button != null) {
+            button.setOnClickListener { dialog.dismiss() }
+        }
 
         dialog.setCancelable(true)
         dialog.setContentView(view)
