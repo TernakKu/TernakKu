@@ -10,10 +10,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.view.WindowInsets
-import android.view.WindowManager
+import android.view.*
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -81,6 +78,7 @@ class ScanActivity : AppCompatActivity() {
                 file.name,
                 requestImageFile
             )
+            showLoading(true)
             val service = ApiConfig.getApiService().predictDisease(imageMultiPart)
             service.enqueue(object : Callback<DiseaseResponse>{
                 override fun onResponse(
@@ -88,6 +86,7 @@ class ScanActivity : AppCompatActivity() {
                     response: Response<DiseaseResponse>
                 ) {
                     if (response.isSuccessful){
+                        showLoading(false)
                         val responseBody = response.body()
 
                         if (responseBody!= null){
@@ -210,6 +209,14 @@ class ScanActivity : AppCompatActivity() {
         dialog.setContentView(view)
 
         dialog.show()
+    }
+
+    private fun showLoading(isLoading: Boolean){
+        if (isLoading){
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
     }
 
     companion object {
