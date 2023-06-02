@@ -16,8 +16,8 @@
     <string name="scan_content">Scan Disini!</string>
     <string name="quetion">quetion</string>
     <string name="cara_penggunaan">Cara Penggunaan</string>
-    <string name="useable_kamera">Ambil gambar bagian tubuh sapi atau ayam yang akan discan. Fokuskan gambar pada bagian tubuh yang terkena penyakit. </string>
-    <string name="useable_galeri">Pilih gambar bagian tubuh sapi atau ayam yang jelas dari galeri anda.</string>
+    <string name="useable_kamera">Ambil gambar bagian tubuh sapi atau ayam yang akan discan. Fokuskan gambar pada bagian tubuh yang terkena penyakit. Perhatian!! untuk mendiagnosa penyakit pada ayam, ambil gambar pada kotoran yang dikeluarkan.</string>
+    <string name="useable_galeri">Pilih gambar bagian tubuh sapi atau ayam yang jelas dari galeri anda. Perhatian!! untuk mendiagnosa penyakit pada ayam, ambil gambar pada kotoran yang dikeluarkan</string>
 
     <string name="search_hint">Masukkan nama penyakit…</string>
     <string name="logo">logo</string>

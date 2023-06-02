@@ -37,16 +37,16 @@ class ResultActivity : AppCompatActivity() {
 
         })
 
-        val image = intent.getStringExtra("img")
-        if (image != null) {
-            getImage(image)
+        val getDisease = intent.getStringExtra("disease")
+        if (getDisease != null) {
+            getPredict(getDisease)
         }
 
     }
 
-    private fun getImage(imageName: String){
-        val client = ApiConfig.getApiService().getImg(imageName)
-        client.enqueue(object : Callback<DiseaseResponse> {
+    private fun getPredict(name: String){
+        val client = ApiConfig.getApiService().getDetails(name)
+        client.enqueue(object : Callback<DiseaseResponse>{
             override fun onResponse(
                 call: Call<DiseaseResponse>,
                 response: Response<DiseaseResponse>
@@ -69,15 +69,16 @@ class ResultActivity : AppCompatActivity() {
 
     private fun setDetailsContent(data: DiseaseResponse){
         binding.apply {
+            val image = intent.getStringExtra("img")
 
             tvNameDisease.text = data.diseaseName
             tvDescContent.text = data.diseaseDetails
             tvPreventContent.text = data.handlingMethod
 
             Glide.with(this@ResultActivity)
-                .load(data.originalImage)
+                .load(image)
                 .error(R.drawable.baseline_broken_image_24_brown2)
-                .into(binding.ivResultImage)
+                .into(ivResultImage)
 
         }
     }

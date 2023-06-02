@@ -95,7 +95,7 @@ class ScanActivity : AppCompatActivity() {
 
                             val intent = Intent(this@ScanActivity, ResultActivity::class.java)
                             intent.putExtra("disease", responseBody.diseaseName)
-                            intent.putExtra("img", responseBody.imageName)
+                            intent.putExtra("img", responseBody.originalImage)
 
                             startActivity(intent)
                         }
