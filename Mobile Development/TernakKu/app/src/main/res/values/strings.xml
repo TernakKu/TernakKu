@@ -22,4 +22,30 @@
     <string name="search_hint">Masukkan nama penyakit…</string>
     <string name="logo">logo</string>
 
+    <string name="favorite">Favorite</string>
+
+
+    <integer-array name="id_penyakit">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
+
+    <string-array name="nama_penyakit">
+        <item>Lumpy Cows</item>
+        <item>Cocciodiosis</item>
+        <item>Salmonella</item>
+    </string-array>
+
+    <string-array name="detail_penyakit">
+        <item>Penyakit sapi berbintik, juga dikenal sebagai Penyakit Kulit Berbintik Bovine (LSD), adalah penyakit viral yang mempengaruhi sapi. Penyakit ini ditandai dengan demam, nodul kulit, dan pembengkakan.</item>
+        <item>Coccidiosis adalah penyakit parasit umum pada unggas yang disebabkan oleh protozoa dari genus Eimeria. Penyakit ini mempengaruhi saluran pencernaan dan dapat menyebabkan diare, penurunan berat badan, dan penurunan produksi telur.</item>
+        <item>Salmonella adalah infeksi bakteri yang dapat mempengaruhi unggas maupun ternak. Penyakit ini dapat menyebabkan diare, dehidrasi, dan dalam kasus yang parah, kematian.</item>
+    </string-array>
+
+    <string-array name="cara_mengatasi">
+        <item>Untuk mengelola penyakit sapi berbintik, penting untuk mengisolasi hewan yang terinfeksi, menerapkan langkah pengendalian vektor, dan memberikan perawatan suportif. Konsultasikan dengan dokter hewan untuk opsi pengobatan yang spesifik.</item>
+        <item>Untuk mengelola Coccidiosis, penting untuk menjaga kebersihan yang baik di tempat pemeliharaan unggas, menyediakan air minum yang bersih, dan menggunakan obat anticoccidial yang sesuai.</item>
+        <item>Untuk mengelola infeksi Salmonella, penting untuk menjaga kebersihan yang baik, menyediakan air minum yang bersih, dan menerapkan langkah biosekuriti. Pemberian antibiotik yang sesuai mungkin diperlukan setelah berkonsultasi dengan dokter hewan.</item>
+    </string-array>
 </resources>

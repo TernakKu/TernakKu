@@ -46,7 +46,7 @@ class ResultActivity : AppCompatActivity() {
 
     private fun getPredict(name: String){
         val client = ApiConfig.getApiService().getDetails(name)
-        client.enqueue(object : Callback<DiseaseResponse>{
+        client.enqueue(object : Callback<DiseaseResponse> {
             override fun onResponse(
                 call: Call<DiseaseResponse>,
                 response: Response<DiseaseResponse>
