@@ -44,4 +44,5 @@ class ListPenyakitAdapter (private var listPenyakit : ArrayList<Disease>)  : Rec
     interface OnItemClickCallback {
         fun onItemClicked(data: Disease)
     }
+
 }

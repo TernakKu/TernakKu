@@ -18,22 +18,6 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         tools:listitem="@layout/list_penyakit"/>
 
-    <ToggleButton
-        android:id="@+id/favorite"
-        android:layout_width="50dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="509dp"
-        android:background="@drawable/favorite_toogle"
-        android:contentDescription="@string/favorite"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:textOff=""
-        android:textOn=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/efb_scan"
         android:layout_width="wrap_content"
@@ -44,10 +28,10 @@
         android:contentDescription="@string/scan_content"
         app:icon="@drawable/baseline_document_scanner_24"
         app:iconTint="@color/brown2"
-        app:iconSize="35dp"
+        app:iconSize="25dp"
         android:textColor="@color/brown2"
-        android:textSize="16sp"
-        app:backgroundTint="@color/brown1"
+        android:textSize="14sp"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +86,6 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/custom_radius"
                 android:iconifiedByDefault="true"
-                android:queryBackground="@android:color/transparent"
                 android:queryHint="@string/search_hint"
                 android:theme="@style/SearchViewStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
