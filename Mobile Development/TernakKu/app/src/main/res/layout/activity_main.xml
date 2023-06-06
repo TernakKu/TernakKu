@@ -79,6 +79,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:contentDescription="@string/logo" />
 
+            <ImageView
+                android:id="@+id/btn_to_login"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/baseline_question_mark_24_brown"
+                app:layout_constraintBottom_toTopOf="@+id/sv_search"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.131"
+                app:layout_constraintStart_toEndOf="@+id/logo_app"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.555" />
+
             <SearchView
                 android:id="@+id/sv_search"
                 android:layout_width="match_parent"

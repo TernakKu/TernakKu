@@ -1,20 +1,34 @@
 package com.dicoding.ternakku
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.ternakku.data.retrofit.Disease
 import com.dicoding.ternakku.databinding.ActivityMainBinding
+import com.dicoding.ternakku.preference.LoginPreference
 import com.dicoding.ternakku.ui.detail.DetailActivity
+import com.dicoding.ternakku.ui.favorite.FavoriteActivity
+import com.dicoding.ternakku.ui.login.LoginActivity
 import com.dicoding.ternakku.ui.scan.ScanActivity
+import com.dicoding.ternakku.viewmodelfactory.ViewModelFactory
 
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "dataSetting")
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var mainViewModel: MainViewModel
+
     private lateinit var rView: RecyclerView
     private val list = ArrayList<Disease>()
 
@@ -23,6 +37,8 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setViewModel()
 
         rView = findViewById(R.id.rV_list)
         rView.setHasFixedSize(true)
@@ -45,6 +61,28 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        binding.btnToLogin.setOnClickListener {
+            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+        }
+    }
+
+    private fun setViewModel(){
+        val pref = LoginPreference.getInstance(dataStore)
+        mainViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory(pref)
+        )[MainViewModel::class.java]
+
+        mainViewModel.getLoginUser().observe(this) { user ->
+            if (user.isLogin) {
+
+            } else {
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+
+        }
     }
 
     private fun getListPenyakit(): ArrayList<Disease> {
@@ -83,6 +121,23 @@ class MainActivity : AppCompatActivity() {
         } else {
             binding.progressBar.visibility = View.GONE
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.favorite_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.favorite -> {
+                startActivity(Intent(this@MainActivity, FavoriteActivity::class.java))
+            }
+            R.id.logout -> {
+                mainViewModel.logout()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     companion object{
