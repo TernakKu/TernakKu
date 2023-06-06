@@ -14,7 +14,7 @@
 | Danang Dasa Ajunmas Rapita| A042DSX3384 | Mobile Development |          Android Mobile Developer          |             - |
 | Muhammad Rifgi Alghifari | A042DKX4942 | Mobile Development |          Android Mobile Developer          |    -   |
 |     Wahyu Wardana     | C135DSX2210 |   Cloud Computing  |               Cloud Engineer              |         [Github](https://github.com/Wahyuwardana2)            |
-| M. Khawaril Putra | C353DSX1960 |   Cloud Computing  |          Cloud Engineer        | - |
+| M. Khawaril Putra | C353DSX1960 |   Cloud Computing  |          Cloud Engineer        |  [Github](https://github.com/mkput) |
 
 
 
