@@ -59,6 +59,9 @@ def predict():
         disease_details, handling_method = get_disease_details(predicted_class)
         storage_bucket = f"https://storage.googleapis.com/ternakku-predict-backend/{original_image_path}"
 
+        #insert data to users_disease_history database
+        #add_user_disease_history(userId, name, predicted_class, storage_bucket)
+
         # response
         response = {
             'disease_name': predicted_class,
