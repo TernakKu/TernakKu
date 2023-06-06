@@ -1,4 +1,4 @@
-package com.dicoding.ternakku.data.retrofit
+package com.dicoding.ternakku.data.retrofit.response
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
