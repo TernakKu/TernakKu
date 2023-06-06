@@ -6,3 +6,8 @@ scikit-learn
 keras
 matplotlib
 flask
+google-cloud-storage
+gunicorn
+firebase-admin
+requests
+pymysql

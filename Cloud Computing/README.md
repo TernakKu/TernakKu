@@ -15,7 +15,8 @@ Prediction data structure:
 {
     "disease_details": "Salmonella adalah infeksi bakteri yang dapat mempengaruhi unggas maupun ternak. Penyakit ini dapat menyebabkan diare, dehidrasi, dan dalam kasus yang parah, kematian.",
     "handling_method": "Untuk mengelola infeksi Salmonella, penting untuk menjaga kebersihan yang baik, menyediakan air minum yang bersih, dan menerapkan langkah biosekuriti. Pemberian antibiotik yang sesuai mungkin diperlukan setelah berkonsultasi dengan dokter hewan.",
-    "predicted_class": "Salmonella"
+    "predicted_class": "Salmonella",
+     "original_image": "https://storage.googleapis.com/ternakku-predict-backend/"
 }
 ```
 Server options:
