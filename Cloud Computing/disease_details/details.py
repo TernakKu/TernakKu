@@ -21,3 +21,20 @@ def get_disease_details(predicted_class):
             return disease_details, handling_method
     except:
         return "Connection to database Fail"
+
+  
+def get_all_disease():
+    connection = create_connection()
+    try:
+        with connection.cursor() as cursor:
+            sql = "SELECT * FROM disease_details"
+            cursor.execute(sql)
+            result = cursor.fetchone()
+
+            disease_name = result["disease_name"]
+            disease_details = result["disease_detail"]
+            handling_method = result["handling_method"]
+
+            return disease_name, disease_details, handling_method
+    except:
+        return "Connection to database Fail"
