@@ -29,12 +29,15 @@ def get_all_disease():
         with connection.cursor() as cursor:
             sql = "SELECT * FROM disease_details"
             cursor.execute(sql)
-            result = cursor.fetchone()
+            results = cursor.fetchall()
 
-            disease_name = result["disease_name"]
-            disease_details = result["disease_detail"]
-            handling_method = result["handling_method"]
+            diseases = []
+            for result in results:
+                disease_name = result["disease_name"]
+                disease_details = result["disease_detail"]
+                handling_method = result["handling_method"]
+                diseases.append((disease_name, disease_details, handling_method))
 
-            return disease_name, disease_details, handling_method
+            return diseases
     except:
         return "Connection to database Fail"

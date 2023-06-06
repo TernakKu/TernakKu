@@ -14,7 +14,7 @@ import jwt, requests
 
 
 # Dapatkan path ke file kunci akses layanan
-key_path = os.path.join(os.getcwd(), 'ternakku-35385c16f3ad.json')
+key_path = os.path.join(os.getcwd(), 'ternakku-f8ca7fe0906b.json')
 
 # Inisialisasi client Google Cloud Storage dengan menggunakan file kunci
 storage_client = storage.Client.from_service_account_json(key_path)
