@@ -1,6 +1,6 @@
 from flask import request, jsonify
 import jwt
-
+secret_key = "eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMjIyMjIyMjIyIiwibmFtZSI6IldhaHl1IFdhcmRhbmEiLCJpYXQiOiJURVJOQUtLVSJ9.3B9nLme7S1JrjXIgA_mWRF8AIzvfmisHu50mInqpPbNUz70hONUSYSQQMArmpw3Z"
 def authenticate_token(func):
     def wrapper(*args, **kwargs):
         # request token
@@ -13,7 +13,7 @@ def authenticate_token(func):
             token = auth_header.split(' ')[1]
 
             # Decode and verify  tken
-            decoded_token = jwt.decode(token, 'your-secret-key', algorithms=['HS256'])
+            decoded_token = jwt.decode(token, secret_key, algorithms=['HS256'])
             request.user = decoded_token
         except jwt.ExpiredSignatureError:
             return jsonify({'error': 'Token expired'}), 403

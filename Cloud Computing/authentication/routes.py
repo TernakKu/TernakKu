@@ -4,11 +4,11 @@ import firebase_admin
 from firebase_admin import credentials, auth
 import jwt, requests
 from . import authenticate_token
-
+from .auth import secret_key
 # Inisialisasi Firebase Admin SDK
 cred = credentials.Certificate('ternakku-firebase-adminsdk-scpfz-dd0e6b7cf6.json')
 firebase_admin.initialize_app(cred)
-api_key = 'AIzaSyDDL3t9jYa2HPn34gybHguxCwQC7KICMzQ'
+api_key = 'XXX'
 url_api = "https://identitytoolkit.googleapis.com/v1"
 
 @authentication_bp.route('/register', methods=['POST'])
@@ -54,7 +54,7 @@ def login():
         login_result = response.json()
         user_id = login_result['localId']
         display_name = auth.get_user(user_id).display_name
-        token = jwt.encode({'userId': user_id,'name': display_name}, 'your-secret-key', algorithm='HS256')
+        token = jwt.encode({'userId': user_id,'name': display_name}, secret_key, algorithm='HS256')
         return jsonify({
             'error': False,
             'message': 'success',
@@ -76,7 +76,7 @@ def logout():
 
     try:
         # Decode and verify the token
-        decoded_token = jwt.decode(token, 'your-secret-key', algorithms=['HS256'])
+        decoded_token = jwt.decode(token, secret_key, algorithms=['HS256'])
      
 ###hm....
         return jsonify({'message': 'Logout successful'})
