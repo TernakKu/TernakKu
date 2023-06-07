@@ -6,7 +6,7 @@ get_diseases_bp = Blueprint('get_diseases', __name__)
 
 from .details import get_disease_details
 from .details import get_all_disease
-# from .connection import create_connection
+from .connection import create_connection
 from . import routes
 
 

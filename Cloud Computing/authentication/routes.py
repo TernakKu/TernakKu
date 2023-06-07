@@ -77,8 +77,8 @@ def logout():
     try:
         # Decode and verify the token
         decoded_token = jwt.decode(token, 'your-secret-key', algorithms=['HS256'])
-        # Perform logout logic here
-        # For example, you can invalidate the token or perform any necessary cleanup
+     
+###hm....
         return jsonify({'message': 'Logout successful'})
     except jwt.ExpiredSignatureError:
         return jsonify({'error': 'Token expired'}), 403

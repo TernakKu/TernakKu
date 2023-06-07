@@ -10,13 +10,14 @@ from authentication import authenticate_token
 from model import model
 from disease_details import get_disease_details
 from google.cloud import storage
+from users_history import add_user_disease_history
 import jwt, requests
 
 
-# Dapatkan path ke file kunci akses layanan
+
 key_path = os.path.join(os.getcwd(), 'ternakku-f8ca7fe0906b.json')
 
-# Inisialisasi client Google Cloud Storage dengan menggunakan file kunci
+# Inisialisasi Google Cloud Storage dengan menggunakan keypath
 storage_client = storage.Client.from_service_account_json(key_path)
 
 bucket_name = 'ternakku-predict-backend'
@@ -55,15 +56,17 @@ def predict():
         # predict
         predicted_class = predict_image(model, image)
 
-        # get disease details, storage link, and handling method
+        # get disease details, storage link,name, userId, and handling method
         disease_details, handling_method = get_disease_details(predicted_class)
         storage_bucket = f"https://storage.googleapis.com/ternakku-predict-backend/{original_image_path}"
-
+        name = request.user['name']
+        userId = request.user['userId']
         #insert data to users_disease_history database
-        #add_user_disease_history(userId, name, predicted_class, storage_bucket)
+        add_user_disease_history(userId, name, predicted_class, storage_bucket)
 
         # response
         response = {
+            'userId': userId,
             'disease_name': predicted_class,
             'disease_details': disease_details,
             'handling_method': handling_method,

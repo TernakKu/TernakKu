@@ -1,16 +1,18 @@
 from flask import request, jsonify
 import jwt
 
-# Middleware untuk memverifikasi token JWT pada setiap permintaan yang membutuhkan otentikasi
 def authenticate_token(func):
     def wrapper(*args, **kwargs):
-        # Extract token from request headers
-        token = request.headers.get('Authorization')
-        if not token:
+        # request token
+        auth_header = request.headers.get('Authorization')
+        if not auth_header:
             return jsonify({'error': 'Unauthorized'}), 401
 
         try:
-            # Decode and verify the token
+            # extract from bearer token
+            token = auth_header.split(' ')[1]
+
+            # Decode and verify  tken
             decoded_token = jwt.decode(token, 'your-secret-key', algorithms=['HS256'])
             request.user = decoded_token
         except jwt.ExpiredSignatureError:
