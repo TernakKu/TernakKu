@@ -1,0 +1,10 @@
+ternakku-f8ca7fe0906b.json
+ternakku-firebase-adminsdk-scpfz-dd0e6b7cf6.json
+app.yaml
+Dockerfile
+connection.py
+test.py
+__pycache__/
+.venv/
+venv/
+
