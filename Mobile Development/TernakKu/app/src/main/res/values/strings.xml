@@ -62,4 +62,6 @@
 
     <string name="sign_in">Masuk</string>
     <string name="sign_up">Daftar</string>
+
+    <string name="pageNull">Tidak ada Riwayat Pemindaian</string>
 </resources>

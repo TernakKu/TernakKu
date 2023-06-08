@@ -16,7 +16,6 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.ternakku.MainActivity
-import com.dicoding.ternakku.R
 import com.dicoding.ternakku.data.retrofit.ApiConfig
 import com.dicoding.ternakku.data.retrofit.response.LoginResponse
 import com.dicoding.ternakku.databinding.ActivityLoginBinding
@@ -89,9 +88,9 @@ class LoginActivity : AppCompatActivity() {
             ViewModelFactory(LoginPreference.getInstance(dataStore))
         )[LoginViewModel::class.java]
 
-        loginViewModel.getUser().observe(this, {user ->
+        loginViewModel.getUser().observe(this) { user ->
             this.user = user
-        })
+        }
     }
 
     private fun userLogin(email: String, password: String){
@@ -102,7 +101,8 @@ class LoginActivity : AppCompatActivity() {
                     val responseBody = response.body()
                     if (responseBody!= null){
                         val token = responseBody.loginResult.token
-                        loginViewModel.saveUserData(AuthorizeModel(token, true))
+                        val id = responseBody.loginResult.userId
+                        loginViewModel.saveUserData(AuthorizeModel(token, id, true))
 
                         Toast.makeText(this@LoginActivity, responseBody.message, Toast.LENGTH_SHORT).show()
 

@@ -13,6 +13,7 @@ class LoginPreference private constructor(private val dataStore: DataStore<Prefe
         dataStore.edit { preference ->
             preference[TOKEN_KEY] = userToken.token
             preference[STATE_KEY] = userToken.isLogin
+            preference[ID_KEY] = userToken.userId
         }
     }
 
@@ -20,6 +21,7 @@ class LoginPreference private constructor(private val dataStore: DataStore<Prefe
         return dataStore.data.map { preference ->
             AuthorizeModel(
                 preference[TOKEN_KEY] ?: "",
+                preference[ID_KEY] ?: "",
                 preference[STATE_KEY] ?: false
             )
         }
@@ -35,6 +37,7 @@ class LoginPreference private constructor(private val dataStore: DataStore<Prefe
         dataStore.edit { preference ->
             preference[STATE_KEY] = false
             preference[TOKEN_KEY] = ""
+            preference[ID_KEY] = ""
         }
     }
 
@@ -49,6 +52,7 @@ class LoginPreference private constructor(private val dataStore: DataStore<Prefe
         private var INSTANCE: LoginPreference? = null
 
         private val STATE_KEY = booleanPreferencesKey("state")
+        private val ID_KEY = stringPreferencesKey("key")
         private val TOKEN_KEY = stringPreferencesKey("token")
 
         fun getInstance(dataStore: DataStore<Preferences>): LoginPreference{

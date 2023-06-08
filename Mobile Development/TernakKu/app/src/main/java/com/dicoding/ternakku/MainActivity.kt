@@ -19,6 +19,7 @@ import com.dicoding.ternakku.databinding.ActivityMainBinding
 import com.dicoding.ternakku.preference.LoginPreference
 import com.dicoding.ternakku.ui.detail.DetailActivity
 import com.dicoding.ternakku.ui.favorite.FavoriteActivity
+import com.dicoding.ternakku.ui.history.HistoryActivity
 import com.dicoding.ternakku.ui.login.LoginActivity
 import com.dicoding.ternakku.ui.scan.ScanActivity
 import com.dicoding.ternakku.viewmodelfactory.ViewModelFactory
@@ -62,8 +63,16 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        binding.btnToLogin.setOnClickListener {
-            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+        binding.icLogout.setOnClickListener {
+            mainViewModel.logout()
+        }
+
+        binding.icFav.setOnClickListener {
+            startActivity(Intent(this@MainActivity, FavoriteActivity::class.java))
+        }
+
+        binding.icHistory.setOnClickListener {
+            startActivity(Intent(this@MainActivity, HistoryActivity::class.java))
         }
     }
 
@@ -121,23 +130,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             binding.progressBar.visibility = View.GONE
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.favorite_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.favorite -> {
-                startActivity(Intent(this@MainActivity, FavoriteActivity::class.java))
-            }
-            R.id.logout -> {
-                mainViewModel.logout()
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     companion object{
