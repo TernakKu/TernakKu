@@ -21,6 +21,7 @@ import com.dicoding.ternakku.data.retrofit.response.LoginResponse
 import com.dicoding.ternakku.databinding.ActivityLoginBinding
 import com.dicoding.ternakku.preference.AuthorizeModel
 import com.dicoding.ternakku.preference.LoginPreference
+import com.dicoding.ternakku.ui.register.RegisterActivity
 import com.dicoding.ternakku.viewmodelfactory.ViewModelFactory
 import retrofit2.Call
 import retrofit2.Callback
@@ -60,6 +61,11 @@ class LoginActivity : AppCompatActivity() {
             val passwordUser = binding.etPassword.text.toString()
 
             userLogin(emailUser, passwordUser)
+        }
+
+        binding.btnToRegist.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
 
     }

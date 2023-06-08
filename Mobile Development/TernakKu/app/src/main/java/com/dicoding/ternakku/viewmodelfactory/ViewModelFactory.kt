@@ -16,8 +16,6 @@ class ViewModelFactory(private val pref: LoginPreference) : ViewModelProvider.Ne
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(pref) as T
             }
-            /*modelClass.isAssignableFrom(RegistrationViewModel::class.java) -> {
-                RegistrationViewModel(pref) as T*/
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 MainViewModel(pref) as T
             }
@@ -27,8 +25,6 @@ class ViewModelFactory(private val pref: LoginPreference) : ViewModelProvider.Ne
             modelClass.isAssignableFrom(HistoryViewModel::class.java) -> {
                 HistoryViewModel(pref) as T
             }
-
-
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
