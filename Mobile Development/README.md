@@ -29,7 +29,7 @@ Our goal in building this application is to assist farmers where they have acces
 ## Libraries
 * [x] [Kotlin](https://kotlinlang.org/)
 * [x] [Glide](https://github.com/bumptech/glide)
-* [x] [Retrofit](https://square.github.io/retrofit/).
+* [x] [Retrofit](https://square.github.io/retrofit/)
 * [x] [CameraX](https://developer.android.com/training/camerax)
 * [x] [Preferences](https://developer.android.com/reference/android/preference/Preference)
 * [x] [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
