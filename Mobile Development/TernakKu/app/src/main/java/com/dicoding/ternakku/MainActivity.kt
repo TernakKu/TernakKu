@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.SearchView
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -63,7 +63,14 @@ class MainActivity : AppCompatActivity() {
         })
 
         binding.icLogout.setOnClickListener {
-            mainViewModel.logout()
+            AlertDialog.Builder(this)
+                .setMessage("Apakah anda yakin ingin keluar ?")
+                .setCancelable(false)
+                .setPositiveButton("Ya") { _, _ ->
+                    mainViewModel.logout()
+                }
+                .setNegativeButton("Tidak", null)
+                .show()
         }
 
         binding.icFav.setOnClickListener {
