@@ -2,6 +2,7 @@ package com.dicoding.ternakku.ui.favorite
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ternakku.ListPenyakitAdapter
@@ -18,6 +19,7 @@ class FavoriteActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
