@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.ternakku.data.retrofit.response.HistoryItem
+import com.dicoding.ternakku.data.retrofit.response.HistoryPredictItem
 import com.dicoding.ternakku.databinding.ListHistoryBinding
 import com.dicoding.ternakku.ui.result.ResultActivity
 
-class HistoryAdapter(private val listHistory: List<HistoryItem>) : RecyclerView.Adapter<HistoryAdapter.HistoryHolder>() {
+class HistoryAdapter(private val listHistory: List<HistoryPredictItem>) : RecyclerView.Adapter<HistoryAdapter.HistoryHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -33,7 +34,7 @@ class HistoryAdapter(private val listHistory: List<HistoryItem>) : RecyclerView.
     override fun getItemCount(): Int = listHistory.size
 
     class HistoryHolder(private val viewBinding: ListHistoryBinding) : RecyclerView.ViewHolder(viewBinding.root) {
-        fun hisBind(itemHistory: HistoryItem){
+        fun hisBind(itemHistory: HistoryPredictItem){
             viewBinding.tvHistoryName.text = itemHistory.diseaseName
             Glide.with(itemView.context)
                 .load(itemHistory.timestamp)

@@ -61,6 +61,17 @@
     <string name="errorEmail">masukkan format email yang benar</string>
 
     <string name="sign_in">Masuk</string>
+    <string name="welcome">Selamat Datang</string>
+    <string name="wc_text">Masuk untuk melanjutkan</string>
+
+    <string name="daftar_q">Belum memiliki akun ? </string>
+    <string name="daftar_a">Buat Akun</string>
+    <string name="masuk_q">Sudah memiliki akun ? </string>
+
+    <string name="masuk_a">Masuk Disini</string>
+    <string name="heading_daftar">Daftar Akun</string>
+    <string name="subheading_daftar">Daftar Akun untuk melanjutkan</string>
+
     <string name="sign_up">Daftar</string>
 
     <string name="pageNull">Tidak ada Riwayat Pemindaian</string>

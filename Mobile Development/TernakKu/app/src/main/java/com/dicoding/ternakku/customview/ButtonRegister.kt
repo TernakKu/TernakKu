@@ -9,7 +9,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import com.dicoding.ternakku.R
 
-class Button: AppCompatButton {
+class ButtonRegister: AppCompatButton {
 
     private lateinit var enableBg: Drawable
     private lateinit var disableBg: Drawable
@@ -34,7 +34,7 @@ class Button: AppCompatButton {
         setTextColor(textColor)
         textSize = 16f
         gravity = Gravity.CENTER
-        text = if (isEnabled) "Masuk" else "Masuk"
+        text = if (isEnabled) "Daftar Akun" else "Daftar Akun"
     }
 
     private fun init(){

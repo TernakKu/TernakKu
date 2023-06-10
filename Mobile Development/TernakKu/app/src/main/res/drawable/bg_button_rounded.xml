@@ -5,7 +5,7 @@
         android:state_pressed="true">
         <shape>
             <solid android:color="@color/brown1" />
-            <corners android:radius="5dp" />
+            <corners android:radius="50dp" />
         </shape>
     </item>
 
@@ -14,11 +14,11 @@
         android:state_pressed="true">
         <shape>
             <solid android:color="@color/brown1" />
-            <corners android:radius="5dp" />
+            <corners android:radius="50dp" />
         </shape>
     </item>
 
     <item
-        android:drawable="@drawable/custom_radius"/>
+        android:drawable="@drawable/custom_button_shape"/>
 
 </selector>

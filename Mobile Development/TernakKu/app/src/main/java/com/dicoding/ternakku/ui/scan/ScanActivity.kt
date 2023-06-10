@@ -111,7 +111,7 @@ class ScanActivity : AppCompatActivity() {
                             val responseBody = response.body()
 
                             if (responseBody!= null){
-                                Log.d("SanActivity", responseBody.diseaseName)
+                                Log.d("ScanActivity", responseBody.diseaseName)
                                 Toast.makeText(this@ScanActivity, responseBody.diseaseName, Toast.LENGTH_SHORT).show()
 
                                 val intent = Intent(this@ScanActivity, ResultActivity::class.java)

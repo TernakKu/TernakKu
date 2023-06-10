@@ -53,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
             postRegister(name, email, password)
         }
 
-        binding.btnToLogin.setOnClickListener {
+        binding.masukA.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }

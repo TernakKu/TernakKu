@@ -44,5 +44,5 @@ interface ApiService {
     fun getHistory(
         @Header("Authorization") token: String,
         @Path("userId") userId: String
-    ) : Call<HistoryResponse>
+    ) : Call<HistoryNewResponse>
 }

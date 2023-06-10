@@ -18,9 +18,12 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ternakku.data.retrofit.ApiConfig
 import com.dicoding.ternakku.data.retrofit.response.HistoryItem
+import com.dicoding.ternakku.data.retrofit.response.HistoryNewResponse
+import com.dicoding.ternakku.data.retrofit.response.HistoryPredictItem
 import com.dicoding.ternakku.data.retrofit.response.HistoryResponse
 import com.dicoding.ternakku.databinding.ActivityHistoryBinding
 import com.dicoding.ternakku.preference.LoginPreference
+import com.dicoding.ternakku.ui.login.LoginActivity
 import com.dicoding.ternakku.ui.result.ResultActivity
 import com.dicoding.ternakku.viewmodelfactory.ViewModelFactory
 import retrofit2.Call
@@ -56,22 +59,22 @@ class HistoryActivity : AppCompatActivity() {
             val userId = history.userId
 
             val service = ApiConfig.getApiService().getHistory("Bearer $token", userId)
-            service.enqueue(object : Callback<HistoryResponse>{
+            service.enqueue(object : Callback<HistoryNewResponse>{
                 override fun onResponse(
-                    call: Call<HistoryResponse>,
-                    response: Response<HistoryResponse>
+                    call: Call<HistoryNewResponse>,
+                    response: Response<HistoryNewResponse>
                 ) {
                     if (response.isSuccessful){
                         showLoading(false)
                         val responseBody = response.body()
                         if (responseBody!= null){
-                            getHistoryData(responseBody.history)
+                            getHistoryData(responseBody.historyPredict)
 
                         }
                     }
                 }
 
-                override fun onFailure(call: Call<HistoryResponse>, t: Throwable) {
+                override fun onFailure(call: Call<HistoryNewResponse>, t: Throwable) {
                     Log.e("HistoryActivity", "onFailure: ${t.message.toString()}")
                     Toast.makeText(this@HistoryActivity, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
                 }
@@ -80,7 +83,7 @@ class HistoryActivity : AppCompatActivity() {
         }
     }
 
-    private fun getHistoryData(listHistory: List<HistoryItem>){
+    private fun getHistoryData(listHistory: List<HistoryPredictItem>){
         val adapter = HistoryAdapter(listHistory)
         binding.rvHistory.adapter = adapter
     }

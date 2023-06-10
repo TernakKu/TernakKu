@@ -4,10 +4,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -74,6 +73,7 @@ class MainActivity : AppCompatActivity() {
         binding.icHistory.setOnClickListener {
             startActivity(Intent(this@MainActivity, HistoryActivity::class.java))
         }
+        setUpFloatingActionButton()
     }
 
     private fun setViewModel(){
@@ -130,6 +130,22 @@ class MainActivity : AppCompatActivity() {
         } else {
             binding.progressBar.visibility = View.GONE
         }
+    }
+
+    private fun setUpFloatingActionButton() {
+        binding.efbScan.setOnClickListener {
+            startActivity(Intent(this@MainActivity, ScanActivity::class.java))
+        }
+        // Detect a scroll and respond based on the direction
+        binding.rVList.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0){ // Scrolling down
+                    binding.efbScan.extend()
+                }else{ // Scrolling up
+                    binding.efbScan.shrink()
+                }
+            }
+        })
     }
 
     companion object{

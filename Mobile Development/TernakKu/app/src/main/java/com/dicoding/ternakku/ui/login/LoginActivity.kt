@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
             userLogin(emailUser, passwordUser)
         }
 
-        binding.btnToRegist.setOnClickListener {
+        binding.daftarA.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
