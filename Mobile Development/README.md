@@ -33,7 +33,6 @@ Our goal in building this application is to assist farmers where they have acces
 * [x] [CameraX](https://developer.android.com/training/camerax)
 * [x] [Preferences](https://developer.android.com/reference/android/preference/Preference)
 * [x] [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
-* [x] [Room Database](https://developer.android.com/training/data-storage/room)
 
 ## Features
 * [x] Login
@@ -41,4 +40,3 @@ Our goal in building this application is to assist farmers where they have acces
 * [x] Animal Disease Detection Feature
 * [x] History
 * [x] List of Diseases
-* [x] Favorite
