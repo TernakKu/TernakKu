@@ -40,3 +40,11 @@ Our goal in building this application is to assist farmers where they have acces
 * [x] Animal Disease Detection Feature
 * [x] History
 * [x] List of Diseases
+
+## Installation
+* First you need to Instalation the IDE such as [Android Studio](https://developer.android.com/studio) or [Visual Studio Code](https://code.visualstudio.com/)
+* In the terminal, navigate to the location in which you would like to store the repo. You can do so by typing the following command:
+  '$ cd <Directory>' -> Example : '$ cd "Documents/"'
+* Now clone the repo URL ternakku in the location folder that you pick the command should be this:
+  '$ git clone https://github.com/TernakKu/TernakKu-Bangkit-2023-Product-Capstone.git'
+* Give the process a few moments to complete. If the process sucess you can open it in the Android Studio or VSCode and run it in your emulator
