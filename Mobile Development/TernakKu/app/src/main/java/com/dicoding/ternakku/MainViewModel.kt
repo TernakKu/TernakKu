@@ -16,10 +16,4 @@ class MainViewModel(private val pref: LoginPreference): ViewModel() {
             pref.logout()
         }
     }
-
-    fun deleteToken(){
-        viewModelScope.launch {
-            pref.deleteToken()
-        }
-    }
 }

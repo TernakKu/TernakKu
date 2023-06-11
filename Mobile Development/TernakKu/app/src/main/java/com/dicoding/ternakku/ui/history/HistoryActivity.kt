@@ -1,7 +1,6 @@
 package com.dicoding.ternakku.ui.history
 
 import android.content.Context
-import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,14 +17,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ternakku.data.retrofit.ApiConfig
-import com.dicoding.ternakku.data.retrofit.response.HistoryItem
 import com.dicoding.ternakku.data.retrofit.response.HistoryNewResponse
 import com.dicoding.ternakku.data.retrofit.response.HistoryPredictItem
-import com.dicoding.ternakku.data.retrofit.response.HistoryResponse
 import com.dicoding.ternakku.databinding.ActivityHistoryBinding
 import com.dicoding.ternakku.preference.LoginPreference
-import com.dicoding.ternakku.ui.login.LoginActivity
-import com.dicoding.ternakku.ui.result.ResultActivity
 import com.dicoding.ternakku.viewmodelfactory.ViewModelFactory
 import retrofit2.Call
 import retrofit2.Callback

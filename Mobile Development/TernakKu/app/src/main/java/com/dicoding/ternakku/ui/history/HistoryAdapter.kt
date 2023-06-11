@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dicoding.ternakku.data.retrofit.response.HistoryItem
 import com.dicoding.ternakku.data.retrofit.response.HistoryPredictItem
 import com.dicoding.ternakku.databinding.ListHistoryBinding
 import com.dicoding.ternakku.ui.result.ResultActivity

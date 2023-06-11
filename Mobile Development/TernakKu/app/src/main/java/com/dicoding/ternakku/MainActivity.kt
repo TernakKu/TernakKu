@@ -4,24 +4,30 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.ternakku.data.retrofit.Disease
+import com.dicoding.ternakku.data.retrofit.ApiConfig
+import com.dicoding.ternakku.data.retrofit.response.DiseasesItem
+import com.dicoding.ternakku.data.retrofit.response.ListDiseaseResponse
 import com.dicoding.ternakku.databinding.ActivityMainBinding
 import com.dicoding.ternakku.preference.LoginPreference
-import com.dicoding.ternakku.ui.detail.DetailActivity
-import com.dicoding.ternakku.ui.favorite.FavoriteActivity
 import com.dicoding.ternakku.ui.history.HistoryActivity
 import com.dicoding.ternakku.ui.login.LoginActivity
 import com.dicoding.ternakku.ui.scan.ScanActivity
 import com.dicoding.ternakku.viewmodelfactory.ViewModelFactory
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "dataSetting")
 class MainActivity : AppCompatActivity() {
@@ -29,8 +35,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var mainViewModel: MainViewModel
 
-    private lateinit var rView: RecyclerView
-    private val list = ArrayList<Disease>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +43,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setViewModel()
+        getListData()
 
-        rView = findViewById(R.id.rV_list)
-        rView.setHasFixedSize(true)
+        val layoutManager = LinearLayoutManager(this)
+        binding.rVList.layoutManager = layoutManager
+        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
+        binding.rVList.addItemDecoration(itemDecoration)
 
-        list.addAll(getListPenyakit())
-        showRecyclerList()
 
         binding.efbScan.setOnClickListener {
             val intent = Intent(this@MainActivity, ScanActivity::class.java)
@@ -73,14 +78,17 @@ class MainActivity : AppCompatActivity() {
                 .show()
         }
 
-        binding.icFav.setOnClickListener {
-            startActivity(Intent(this@MainActivity, FavoriteActivity::class.java))
-        }
-
         binding.icHistory.setOnClickListener {
             startActivity(Intent(this@MainActivity, HistoryActivity::class.java))
         }
         setUpFloatingActionButton()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mainViewModel.getLoginUser().observe(this) {
+            getListData()
+        }
     }
 
     private fun setViewModel(){
@@ -101,35 +109,40 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getListPenyakit(): ArrayList<Disease> {
-        val dataId = resources.getIntArray(R.array.id_penyakit)
-        val dataName = resources.getStringArray(R.array.nama_penyakit)
-        val dataDescription = resources.getStringArray(R.array.detail_penyakit)
-        val dataHeandle = resources.getStringArray(R.array.cara_mengatasi)
-        val listPenyakit = ArrayList<Disease>()
-        for (i in dataName.indices) {
-            val penyakit = Disease(dataId[i],dataName[i], dataDescription[i], dataHeandle[i])
-            listPenyakit.add(penyakit)
-        }
-        return listPenyakit
-    }
-
-    private fun showRecyclerList() {
-        rView.layoutManager = LinearLayoutManager(this)
-        val listPenyakit = ListPenyakitAdapter(list)
-        rView.adapter = listPenyakit
-
-        listPenyakit.setOnItemClickCallback(object : ListPenyakitAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Disease) {
-                val intentToDetail = Intent(this@MainActivity, DetailActivity::class.java)
-                intentToDetail.putExtra(EXTRA_NAME, data)
-                intentToDetail.putExtra(EXTRA_ID, data.id)
-                intentToDetail.putExtra(EXTRA_NAMED, data.name)
-                intentToDetail.putExtra(EXTRA_DETAIL, data.detail)
-                startActivity(intentToDetail)
+    private fun getListData(){
+        showLoading(true)
+        val client = ApiConfig.getApiService().getListDiseases()
+        client.enqueue(object : Callback<ListDiseaseResponse> {
+            override fun onResponse(
+                call: Call<ListDiseaseResponse>,
+                response: Response<ListDiseaseResponse>
+            ) {
+                showLoading(false)
+                if(response.isSuccessful){
+                    val responsBody = response.body()
+                    if (responsBody!= null){
+                        setData(responsBody.diseases)
+                    }
+                } else {
+                    Toast.makeText(this@MainActivity, response.message(), Toast.LENGTH_SHORT).show()
+                }
             }
+
+            override fun onFailure(call: Call<ListDiseaseResponse>, t: Throwable) {
+                showLoading(false)
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+                Toast.makeText(this@MainActivity, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
+            }
+
         })
     }
+
+    private fun setData(listPenyakit: List<DiseasesItem>){
+        val adapter = ListPenyakitAdapter(listPenyakit)
+        binding.rVList.adapter = adapter
+    }
+
+
 
     private fun showLoading(isLoading: Boolean){
         if (isLoading){
@@ -156,10 +169,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object{
+        const val TAG = "MainActivity"
         const val EXTRA_ID = "extra_id"
-        const val EXTRA_NAME = "extra_name"
         const val EXTRA_NAMED = "extra_named"
         const val EXTRA_DETAIL = "extra_detail"
+        const val EXTRA_HANDLE = "extra_handle"
     }
 
 

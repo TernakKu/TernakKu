@@ -95,28 +95,13 @@
                 app:layout_constraintVertical_bias="0.85" />
 
             <ImageView
-                android:id="@+id/ic_fav"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/baseline_favorite_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ic_logout"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/logo_app"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.495"
-                android:contentDescription="@string/favorite" />
-
-            <ImageView
                 android:id="@+id/ic_history"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:layout_marginEnd="8dp"
                 android:src="@drawable/baseline_history_24"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ic_fav"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.568"
                 app:layout_constraintStart_toEndOf="@+id/logo_app"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.495" />

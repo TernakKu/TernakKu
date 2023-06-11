@@ -20,10 +20,4 @@ class LoginViewModel(private val pref: LoginPreference) : ViewModel() {
         }
     }
 
-    fun login(){
-        viewModelScope.launch {
-            pref.login()
-        }
-    }
-
 }

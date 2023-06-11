@@ -13,24 +13,23 @@ interface ApiService {
     fun predictDisease(
         @Header("Authorization") token: String,
         @Part image: MultipartBody.Part,
-    ) : Call<DiseaseResponse>
+    ): Call<DiseaseResponse>
 
     @GET("details/{predictedClass}")
     fun getDetails(
-        @Path("predictedClass") predictedClass: String
-    ) : Call<DiseaseResponse>
+        @Path("predictedClass") predictedClass: String,
+    ): Call<DiseaseResponse>
 
     @GET("diseases")
     fun getListDiseases(
-        @Header("Authorization") token: String,
-    ) : Call<ListResponse>
+    ): Call<ListDiseaseResponse>
 
     @FormUrlEncoded
     @POST("authentication/register")
     fun register(
         @Field("name") name: String,
         @Field("email") email: String,
-        @Field("password") password: String
+        @Field("password") password: String,
     ): Call<RegisterResponse>
 
     @FormUrlEncoded
@@ -43,6 +42,6 @@ interface ApiService {
     @GET("get_user_history/{userId}")
     fun getHistory(
         @Header("Authorization") token: String,
-        @Path("userId") userId: String
-    ) : Call<HistoryNewResponse>
+        @Path("userId") userId: String,
+    ): Call<HistoryNewResponse>
 }
