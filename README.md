@@ -3,7 +3,7 @@
 .
 
 <h1 align="center">
-  <img align="center" src="Image/Logo_TernakKu_1.png"  width="500"></img>
+  <img align="center" src="Mobile Development/Image/Logo_TernakKu_1.png"  width="500"></img>
 <br>
 TernakKu
 </h1>
@@ -19,17 +19,17 @@ Our goal in building this application is to assist farmers where they have acces
 ## Screenshot 
 
 <p align="center">
-  <img src="Screenshot/Login.png" width="200">
-  <img src="Screenshot/Logout.png" width="200">
-  <img src="Screenshot/Home.png" width="200">
-  <img src="Screenshot/Detail.png" width="200">
+  <img src="Screenshot/Login.jpg" width="200">
+  <img src="Screenshot/Logout.jpg" width="200">
+  <img src="Screenshot/Home.jpg" width="200">
+  <img src="Screenshot/Detail.jpg" width="200">
 </p>
 
 <p align="center">
-  <img src="Screenshot/Cara.png" width="200">
-  <img src="Screenshot/Main Fitur.png" width="200">
-  <img src="Screenshot/Hasil.png" width="200">
-  <img src="Screenshot/History.png" width="200">
+  <img src="Screenshot/Cara.jpg" width="200">
+  <img src="Screenshot/Main Fitur.jpg" width="200">
+  <img src="Screenshot/Hasil.jpg" width="200">
+  <img src="Screenshot/History.jpg" width="200">
 </p>
 
 
