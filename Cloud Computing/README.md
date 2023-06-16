@@ -103,7 +103,7 @@ To ensure secure authentication and user data storage, we have integrated Fireba
 
 | Name          | Type   | Default | Required | Value                             |
 | ------------- | ------ | ------- | -------- | --------------------------------- |
-| Authorization | Bearer |         | Yes      | Auth token from register or login |
+| Authorization | Bearer |         | NO      | Auth token from register or login |
 
 #### Body [ Form Data ]
 
@@ -139,6 +139,11 @@ To ensure secure authentication and user data storage, we have integrated Fireba
 
 - ## Get All Diseases
 #### GET ```/diseases```
+#### Header
+
+| Name          | Type   | Default | Required | Value                             |
+| ------------- | ------ | ------- | -------- | --------------------------------- |
+| Authorization | Bearer |         | No      | Auth token from register or login |
 
 #### Successful response
 
@@ -185,6 +190,11 @@ To ensure secure authentication and user data storage, we have integrated Fireba
 
 - ## Get Detail Diseases
 #### GET ```details/Salmonella```
+#### Header
+
+| Name          | Type   | Default | Required | Value                             |
+| ------------- | ------ | ------- | -------- | --------------------------------- |
+| Authorization | Bearer |         | No      | Auth token from register or login |
 
 #### Successful response
 
@@ -217,6 +227,10 @@ To ensure secure authentication and user data storage, we have integrated Fireba
 - ## Get Predict History by User Id
 #### GET ```/get_user_history/<user id>```
 #### Header
+
+| Name          | Type   | Default | Required | Value                             |
+| ------------- | ------ | ------- | -------- | --------------------------------- |
+| Authorization | Bearer |         | No      | Auth token from register or login |
 
 #### Successful response
 
