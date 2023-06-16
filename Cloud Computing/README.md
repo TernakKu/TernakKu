@@ -189,7 +189,7 @@ To ensure secure authentication and user data storage, we have integrated Fireba
 
 
 - ## Get Detail Diseases
-#### GET ```details/Salmonella```
+#### GET ```details/<disease name>```
 #### Header
 
 | Name          | Type   | Default | Required | Value                             |
