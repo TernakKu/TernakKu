@@ -11,7 +11,7 @@ TernakKu
   This is a capstone project on  <a href="https://grow.google/intl/id_id/bangkit/"><strong>Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka</strong></a>
    Program.
     <br />
-    <a href="https://github.com/TernakKu/TernakKu-Bangkit-2023-Product-Capstone"><strong>Explore this project »</strong></a>
+    <a href="https://github.com/TernakKu/TernakKu-Bangkit-2023-Product-Capstone"><strong>Explore this project »</strong></a>    <a href="https://bit.ly/TernakKu"><strong>Download the Aplication»</strong></a>
     <br />
   </p>
 
