@@ -14,6 +14,11 @@ TernakKu
     <a href="https://github.com/TernakKu/TernakKu-Bangkit-2023-Product-Capstone"><strong>Explore this project »</strong></a>    <a href="https://bit.ly/TernakKu"><strong>Download the Aplication»</strong></a>
     <br />
   </p>
+## Repository
+[Cloud Computing](https://github.com/TernakKu/TernakKu-Bangkit-2023-Product-Capstone/tree/main/Cloud%20Computing)
+[Machine Larning](https://github.com/TernakKu/TernakKu-Bangkit-2023-Product-Capstone/tree/main/Machine%20Larning)
+[Mobile Development](https://github.com/TernakKu/TernakKu-Bangkit-2023-Product-Capstone/tree/main/Mobile%20Development)
+
 
 ## Project Background
 Information about diseases for farmers on their livestock are needed, especially for farmers who live far from town or in a rural area which are far away from vets and that would be a challenge for them if their livestock get diseases and they don’t know or are not aware of diseases due to lack of knowledge or limitations on technology they use as a result, the health of the animals is also a concern, and also leading to lower productivity and profitability for the farmers. 
