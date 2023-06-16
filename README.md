@@ -57,7 +57,26 @@ Our goal in building this application is to assist farmers where they have acces
   `$ git clone https://github.com/TernakKu/TernakKu-Bangkit-2023-Product-Capstone.git`
 * Give the process a few moments to complete. If the process sucess you can open it in the Android Studio or VSCode and run it in your emulator
 
-# License
-Distributed under the MIT License. See `LICENSE` for more information.
 
-<p align="right"> LifeAtBangkit <br> C23-PS408 Teams </p>
+## Documentation
+
+### Machine Learning Documentation
+
+<a href="https://github.com/TernakKu/TernakKu-Bangkit-2023-Product-Capstone/tree/main/Machine%20Larning">Link for Machine Learning Documentation
+
+### Mobile Development Documentation
+  
+<a href="https://github.com/TernakKu/TernakKu-Bangkit-2023-Product-Capstone/tree/main/Mobile%20Development">Link for Mobile Development Documentation
+
+### Cloud Computing Documentation
+
+<a href="https://github.com/TernakKu/TernakKu-Bangkit-2023-Product-Capstone/tree/main/Cloud%20Computing">Link for Cloud Computing Documentation
+
+
+---
+
+
+<p align="center">
+    <a href="https://github.com/TernakKu/TernakKu-Bangkit-2023-Product-Capstone/"> © C23-PS408 | TernakKu </a>
+</p>
+
